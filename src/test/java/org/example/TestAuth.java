@@ -1,9 +1,9 @@
 package org.example;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.Before;
-import org.junit.After;
+import org.junit.gen5.api.Assertions;
+import org.junit.gen5.api.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,19 +16,18 @@ import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.concurrent.TimeUnit;
 
-public class AuthorizationTest {
+public class TestAuth {
 
-  private WebDriver driver;
+  private static WebDriver driver;
 
-  private Actions builder;
+  private static Actions builder;
 
-  private WebDriverWait wait;
+  private static WebDriverWait wait;
 
-  private JavascriptExecutor js;
+  private static JavascriptExecutor js;
 
-  @Before
-  public void setUp() {
-    //System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
+  @BeforeAll
+  public static void setUp() {
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     builder = new Actions(driver);
@@ -36,43 +35,43 @@ public class AuthorizationTest {
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   }
 
-  @After
-  public void tearDown() {
+  @AfterAll
+  public static void tearDown() {
     driver.quit();
   }
 
   @Test
-  public void authorizationTest() {
+  public void testAuthorization() {
     driver.get("https://www.povarenok.ru/");
     driver.manage().window().setSize(new Dimension(1296, 696));
 
     {
       WebElement element = driver.findElement(By.tagName("body"));
-      Assert.assertNotNull(element);
+      Assertions.assertNotNull(element);
       builder.moveToElement(element, 0, 0).perform();
     }
 
     WebElement loginInput = driver.findElement(By.cssSelector(".bl #tl_login_id"));
-    Assert.assertEquals(loginInput.getAttribute("name"), "login");
+    Assertions.assertEquals(loginInput.getAttribute("name"), "login");
     loginInput.click();
     loginInput.sendKeys("Tillibonk");
 
     WebElement passwordInput = driver.findElement(By.cssSelector(".bl #tl_pwd_id"));
-    Assert.assertEquals(passwordInput.getAttribute("name"), "password");
+    Assertions.assertEquals(passwordInput.getAttribute("name"), "password");
     passwordInput.click();
     passwordInput.sendKeys("nastya2017");
 
     WebElement loginButton = driver.findElement(By.cssSelector(".bl > .auth-form p:nth-child(6) > input"));
-    Assert.assertEquals(loginButton.getAttribute("value"), "Войти на сайт");
+    Assertions.assertEquals(loginButton.getAttribute("value"), "Войти на сайт");
     loginButton.click();
 
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".news-bl > p")));
     WebElement newsBox = driver.findElement(By.cssSelector(".news-bl > p"));
-    Assert.assertNotNull(newsBox);
+    Assertions.assertNotNull(newsBox);
     newsBox.click();
 
     WebElement exitLink = driver.findElement(By.linkText("Выйти"));
-    Assert.assertEquals(exitLink.getAttribute("href"), "https://www.povarenok.ru/logout/");
+    Assertions.assertEquals(exitLink.getAttribute("href"), "https://www.povarenok.ru/logout/");
     exitLink.click();
   }
 }
