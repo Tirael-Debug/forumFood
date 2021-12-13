@@ -30,8 +30,8 @@ public class TestAuth {
   @Test
   public void testAuthorization() {
     driver.get("https://www.povarenok.ru/");
-   LoginPageObject loginPageObject=new LoginPageObject(driver);
-   loginPageObject.loginIn("Tillibonk", "nastya2017");
+   LoginPageFactory loginPageFactory=new LoginPageFactory(driver);
+   loginPageFactory.loginIn("Tillibonk", "nastya2017");
    WebElement hello=driver.findElement(By.cssSelector(".userhello"));
    Assertions.assertEquals(hello.getText(),"Здравствуйте, Tillibonk\nПоварёнок 0 уровня");
    WebElement exitLink = driver.findElement(By.linkText("Выйти"));

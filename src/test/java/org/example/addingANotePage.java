@@ -1,36 +1,42 @@
 package org.example;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class addingANotePage {
-    private WebDriver driver;
+    private  WebDriver driver;
+
+    @FindBy(css = "#post_title_id")
     private WebElement newTipTitle;
+    @FindBy (css = "#short_id")
     private WebElement shortTitle;
+    @FindBy (id = "text_body")
     private WebElement tipText;
+    @FindBy (css = ".sub")
     private WebElement saveButton;
 
     public addingANotePage(WebDriver driver) {
         this.driver=driver;
-        newTipTitle=driver.findElement(By.cssSelector("#post_title_id"));
-        shortTitle=driver.findElement(By.cssSelector("#short_id"));
-        tipText=driver.findElement(By.id("text_body"));
-        saveButton=driver.findElement(By.cssSelector(".sub"));
-
+        PageFactory.initElements(driver, this);
     }
 
-    public void newTipTitle(String text){
+    public addingANotePage newTipTitle(String text){
         newTipTitle.sendKeys(text);
+        return this;
     }
-    public void shortTitle(String text){
+    public addingANotePage shortTitle(String text){
         shortTitle.sendKeys(text);
+        return this;
     }
-    public void tipText(String text){
+    public addingANotePage tipText(String text){
         tipText.sendKeys(text);
+        return this;
     }
-    public void saveButton(){
+    public addingANotePage saveButton(){
         saveButton.click();
+        return this;
     }
 
 }

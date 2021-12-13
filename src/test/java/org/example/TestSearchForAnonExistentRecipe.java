@@ -30,7 +30,7 @@ public class TestSearchForAnonExistentRecipe {
     @Test
     public void testSearchForAnonExistentRecipe(){
         driver.get("https://www.povarenok.ru/");
-        LoginPageObject search1=new LoginPageObject(driver);
+        LoginPageFactory search1=new LoginPageFactory(driver);
         search1.search("Тирлитуредуй");
         String text = driver.findElement(By.cssSelector("body > div.page-width > div.site-content > div > div.content-md > section:nth-child(2) > div.separation-block.sort-res > div.bl-right > strong")).getText();
         Assertions.assertEquals(text,"ничего не найдено");

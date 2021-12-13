@@ -31,7 +31,7 @@ public class TestAuthWithoutLoginAndPass {
     @Test
     public void testAuthorizationWithoutLoginAndPassword() {
         driver.get("https://www.povarenok.ru/");
-        LoginPageObject loginButtonEntrance = new LoginPageObject(driver);
+        LoginPageFactory loginButtonEntrance = new LoginPageFactory(driver);
         loginButtonEntrance.loginButtonEntranceClic();
         String text = driver.findElement(By.cssSelector(".fr")).getText();
         Assertions.assertEquals(text, "Забыли пароль?");

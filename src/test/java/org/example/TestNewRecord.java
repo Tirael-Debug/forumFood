@@ -28,7 +28,7 @@ public class TestNewRecord {
   @Test
   public void testNewRecord() {
     driver.get("https://www.povarenok.ru/");
-    LoginPageObject loginPageObject=new LoginPageObject(driver);
+    LoginPageFactory loginPageObject=new LoginPageFactory(driver);
     loginPageObject.loginIn("Tillibonk", "nastya2017");
     personalAccountPage personalAccountPage=new personalAccountPage(driver);
     personalAccountPage.noteLink();

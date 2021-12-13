@@ -28,7 +28,7 @@ public class TestLinkForgotPassword {
     @Test
     public void testLinkForgotPassword(){
         driver.get("https://www.povarenok.ru/");
-        LoginPageObject LinkForgotPassword=new LoginPageObject(driver);
+        LoginPageFactory LinkForgotPassword=new LoginPageFactory(driver);
         LinkForgotPassword.linkForgotPassword();
         String text = driver.findElement(By.cssSelector("a[href=\"/remind/?email=&site=povarenok\"]")).getText();
         Assertions.assertEquals(text,"Забыли пароль?");
