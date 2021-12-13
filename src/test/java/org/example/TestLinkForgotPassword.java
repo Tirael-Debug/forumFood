@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.util.concurrent.TimeUnit;
 
 public class TestLinkForgotPassword {
@@ -29,9 +28,10 @@ public class TestLinkForgotPassword {
     @Test
     public void testLinkForgotPassword(){
         driver.get("https://www.povarenok.ru/");
-        driver.findElement(By.linkText("Вспомнить пароль")).click();
-        String text = driver.findElement(By.cssSelector("body > div.main-form > div:nth-child(1) > div > h1")).getText();
+        LoginPageObject LinkForgotPassword=new LoginPageObject(driver);
+        LinkForgotPassword.linkForgotPassword();
+        String text = driver.findElement(By.cssSelector("a[href=\"/remind/?email=&site=povarenok\"]")).getText();
         Assertions.assertEquals(text,"Забыли пароль?");
-        driver.close();
+
     }
 }

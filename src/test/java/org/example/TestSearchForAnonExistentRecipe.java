@@ -30,11 +30,11 @@ public class TestSearchForAnonExistentRecipe {
     @Test
     public void testSearchForAnonExistentRecipe(){
         driver.get("https://www.povarenok.ru/");
-        driver.findElement(By.cssSelector("body > div.page-width > header > div > div > div.search-wrap > form > input[type=text]:nth-child(1)")).sendKeys("Тирлитуредуй");
-        driver.findElement(By.cssSelector("body > div.page-width > header > div > div > div.search-wrap > form > input[type=submit]:nth-child(2)")).click();
-        String text = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/section[1]/div[4]/div[2]/strong")).getText();
+        LoginPageObject search1=new LoginPageObject(driver);
+        search1.search("Тирлитуредуй");
+        String text = driver.findElement(By.cssSelector("body > div.page-width > div.site-content > div > div.content-md > section:nth-child(2) > div.separation-block.sort-res > div.bl-right > strong")).getText();
         Assertions.assertEquals(text,"ничего не найдено");
-        driver.close();
+
     }
 
 }

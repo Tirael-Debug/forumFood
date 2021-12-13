@@ -11,10 +11,12 @@ import java.util.concurrent.TimeUnit;
 
 public class TestAuthWithoutLoginAndPass {
 
-   private static WebDriver driver;
+    private static WebDriver driver;
+
 
     @BeforeAll
     public static void setUp() {
+
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -27,11 +29,12 @@ public class TestAuthWithoutLoginAndPass {
     }
 
     @Test
-    public void testAuthorizationWithoutLoginAndPassword(){
+    public void testAuthorizationWithoutLoginAndPassword() {
         driver.get("https://www.povarenok.ru/");
-        driver.findElement(By.cssSelector(".bl > .auth-form p:nth-child(6) > input")).click();
+        LoginPageObject loginButtonEntrance = new LoginPageObject(driver);
+        loginButtonEntrance.loginButtonEntranceClic();
         String text = driver.findElement(By.cssSelector(".fr")).getText();
-        Assertions.assertEquals(text,"Забыли пароль?");
-        driver.close();
+        Assertions.assertEquals(text, "Забыли пароль?");
+
     }
 }
