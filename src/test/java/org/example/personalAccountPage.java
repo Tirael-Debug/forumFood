@@ -16,7 +16,9 @@ public class personalAccountPage {
     private WebElement search;
     @FindBy (css = ".userhello")
     private WebElement hello;
-    @FindBy (xpath ="/html/body/div[5]/div[3]/div/div[2]/noindex[1]/div/ul/li[6]/a" )
+    @FindBy (css ="body > div.page-width > div.site-content > div > div:nth-child(2) > noindex > div > ul > li:nth-child(6) > a" )
+
+
     private WebElement noteLink;
 
     public personalAccountPage (WebDriver driver){

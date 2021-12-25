@@ -1,5 +1,6 @@
 package org.example;
 
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -25,6 +26,7 @@ public class TestLinkForgotPassword {
         driver.quit();
     }
 
+    @Description("Тестирование кнопки - Забыли пароль? ")
     @Test
     public void testLinkForgotPassword(){
         driver.get("https://www.povarenok.ru/");

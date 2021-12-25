@@ -1,7 +1,9 @@
 package org.example;
 
-import org.junit.gen5.api.Assertions;
+//import org.junit.gen5.api.Assertions;
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -27,7 +29,7 @@ public class TestAuthWithoutLoginAndPass {
 
         driver.quit();
     }
-
+    @Description("Негативный тест. Тестирование авторизации с не валидными данными")
     @Test
     public void testAuthorizationWithoutLoginAndPassword() {
         driver.get("https://www.povarenok.ru/");

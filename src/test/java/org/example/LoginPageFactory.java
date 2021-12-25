@@ -16,7 +16,7 @@ public class LoginPageFactory {
     private WebElement loginButtonEntrance;
     @FindBy(css = ".bl > .auth-form p:nth-child(6) > input")
     private WebElement linkForgotPassword;
-    @FindBy(xpath = "/html/body/div[5]/header/div/div/div[4]/form/input[1]")
+    @FindBy(css = "body > div.page-width > header > div > div > div.search-wrap > form > input[type=text]:nth-child(1)")
     private WebElement search;
     @FindBy(css = "body > div.page-width > header > div > div > div.search-wrap > form > input[type=submit]:nth-child(2)")
     private WebElement magnifier;

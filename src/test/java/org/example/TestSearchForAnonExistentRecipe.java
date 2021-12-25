@@ -1,5 +1,6 @@
 package org.example;
 
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -27,6 +28,7 @@ public class TestSearchForAnonExistentRecipe {
         driver.quit();
     }
 
+    @Description("Тестирование поисковой системы. Ввод наименования, которое отсутствует в системе")
     @Test
     public void testSearchForAnonExistentRecipe(){
         driver.get("https://www.povarenok.ru/");

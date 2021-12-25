@@ -1,7 +1,10 @@
 package org.example;
 
-import org.junit.gen5.api.Assertions;
+//import org.junit.gen5.api.Assertions;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -25,6 +28,8 @@ public class TestAuth {
   public static void tearDown() {
     driver.quit();
   }
+
+  @Description ("Позитивный тест. Тестирование авторизации с валидными данными")
 
 
   @Test
