@@ -1,7 +1,9 @@
 package org.example;
 
-import org.junit.gen5.api.Assertions;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
@@ -14,6 +16,7 @@ public class TestNewRecord {
 
   @BeforeAll
   public static void setUp() {
+    WebDriverManager.chromedriver().setup();
     driver = new ChromeDriver();
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   }
