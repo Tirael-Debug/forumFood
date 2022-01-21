@@ -1,6 +1,7 @@
 package org.example;
 
 //import org.junit.gen5.api.Assertions;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -22,6 +23,7 @@ public class TestNewRecord {
 
   @AfterAll
   public static void tearDown() {
+    WebDriverManager.chromedriver().setup();
     driver.findElement(By.linkText("Выйти")).click();
     driver.quit();
   }

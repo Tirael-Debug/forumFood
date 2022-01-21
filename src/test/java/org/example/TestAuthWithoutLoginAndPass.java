@@ -1,6 +1,7 @@
 package org.example;
 
 //import org.junit.gen5.api.Assertions;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -18,7 +19,7 @@ public class TestAuthWithoutLoginAndPass {
 
     @BeforeAll
     public static void setUp() {
-
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 

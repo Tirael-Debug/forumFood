@@ -1,6 +1,7 @@
 package org.example;
 
 //import org.junit.gen5.api.Assertions;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import org.junit.jupiter.api.AfterAll;
@@ -21,6 +22,7 @@ public class TestAuth {
   public static void setUp() {
 
     driver = new ChromeDriver();
+      WebDriverManager.chromedriver().setup();
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   }
 
@@ -42,5 +44,6 @@ public class TestAuth {
    WebElement exitLink = driver.findElement(By.linkText("Выйти"));
    Assertions.assertEquals(exitLink.getAttribute("href"), "https://www.povarenok.ru/logout/");
    exitLink.click();
+
   }
 }
